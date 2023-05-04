@@ -35,6 +35,10 @@ namespace loginValidaciones
                 {
                     MessageBox.Show("Por favor llene los campos");
                 }
+                else
+                {
+                    MessageBox.Show("Usuario Regitrado Correctamente");
+                }
             }
             catch (Exception h)
             {

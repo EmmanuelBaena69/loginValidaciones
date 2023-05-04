@@ -90,7 +90,7 @@
             this.btnRegistrarse.Font = new System.Drawing.Font("Yu Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarse.Location = new System.Drawing.Point(258, 306);
             this.btnRegistrarse.Name = "btnRegistrarse";
-            this.btnRegistrarse.Size = new System.Drawing.Size(115, 44);
+            this.btnRegistrarse.Size = new System.Drawing.Size(127, 44);
             this.btnRegistrarse.TabIndex = 37;
             this.btnRegistrarse.Text = "Registrarse";
             this.btnRegistrarse.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(115, 44);
             this.btnCancelar.TabIndex = 38;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Text = "Ir Atras";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 

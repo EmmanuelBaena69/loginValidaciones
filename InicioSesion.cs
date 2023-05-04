@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using static System.Collections.Specialized.BitVector32;
 
 namespace loginValidaciones
 {
@@ -36,6 +37,10 @@ namespace loginValidaciones
                 if (Sesion.ReadLine() == txtPassw.Text)
                 {
                     MessageBox.Show("Ha Iniciado Sesion");
+                    //Para ir a pantalla meme
+                    this.Hide();
+                    meme img = new meme();
+                    img.Show();
                 }
                 else
                 {
