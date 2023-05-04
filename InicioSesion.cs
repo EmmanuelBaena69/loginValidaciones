@@ -13,6 +13,7 @@ namespace loginValidaciones
 {
     public partial class InicioSesion : Form
     {
+        int intento = 0;
         public InicioSesion()
         {
             InitializeComponent();
@@ -20,7 +21,6 @@ namespace loginValidaciones
 
         private void btnRegistrarse_Click(object sender, EventArgs e)
         {
-            int intento= 0;
             try
             {
                 //Sirve para buscar el archivo en la carpeta debug y leerlo de lo contrario mostrara error
@@ -41,10 +41,10 @@ namespace loginValidaciones
                 {
                     //Contador para numero de intentos y cuando se supere el numero
                     //de intentos permitidos sacar al usuario sospechoso
+                    intento++;
                     if (intento >= 3)
                     {
                         Application.Exit();
-                        intento++;
                     }
 
                     MessageBox.Show("Nombre de usuario o contraseña incorrectas");
