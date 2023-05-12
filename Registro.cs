@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using System.Data.SQLite;
 
 namespace loginValidaciones
 {
@@ -21,6 +22,57 @@ namespace loginValidaciones
 
         private void btnRegistrarse_Click(object sender, EventArgs e)
         {
+    
+            //Para verificar campos vacios
+            if (txtUsuario.Text.Trim() != "" && txtPassw.Text.Trim() != "")
+            {
+                try
+                {
+                    //Login con SQLite
+                    SQLiteConnection conexion_sqlite;
+                    SQLiteCommand cmd_sqlite;
+                    SQLiteDataReader datareader_sqlite;
+
+                    //Conexion a la base de datos
+                    conexion_sqlite = new SQLiteConnection("Data Source=login.db;Version=3;");
+
+                    //Abrimos la conexion
+                    conexion_sqlite.Open();
+
+                    cmd_sqlite = conexion_sqlite.CreateCommand();
+
+
+                    //Insertando valores, no se inserta el id ya que es auto incrementable
+                    cmd_sqlite.CommandText = string.Format("INSERT INTO tbl_Users (nom, passw) VALUES ('" + txtUsuario.Text + "', " + txtPassw.Text +")"); 
+
+                    datareader_sqlite = cmd_sqlite.ExecuteReader();
+
+                    while (datareader_sqlite.Read())
+                    {
+                        //Mostrando los datos
+
+                        string nom = datareader_sqlite.GetString(1);
+                        string passw = datareader_sqlite.GetString(2);
+
+                    }
+
+                    conexion_sqlite.Close();
+                    MessageBox.Show("Registrado Correctamente");
+
+                }
+                catch (Exception iu)
+                {
+
+                    MessageBox.Show("Error al intentar registrarse" + iu.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor llene los campos");
+            }
+
+            //Login con archivos planos
+            /*
             try
             {
                 //Codigo para registrar un usuario, el archivo se alacenara en la carpeta debug
@@ -45,7 +97,7 @@ namespace loginValidaciones
 
                 MessageBox.Show("Hubo un erro" + h, "Error");
                 
-            }
+            }*/
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
